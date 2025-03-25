@@ -11,4 +11,4 @@ This game features:
 
 ![Gameplay Preview](PASS3%20-%20Grade%2012/Content/Sci-Opolis.gif)  
 
-> 🎮 **Watch Full Gameplay:** [YouTube Video](https://youtu.be/HobAbvKmJ4E)
+> 🎮 **Watch Full Gameplay:**  <a href="https://youtu.be/HobAbvKmJ4E" target="_blank">YouTube Video</a>
