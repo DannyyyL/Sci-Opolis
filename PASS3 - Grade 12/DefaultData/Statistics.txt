@@ -1,0 +1,6 @@
+Best Survival Time,0
+Coins,0
+Coins Spent,0
+Times Logged In,0
+Waves Survived,0
+Enemies Killed,0

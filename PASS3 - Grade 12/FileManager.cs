@@ -17,6 +17,12 @@ namespace PASS3___Grade_12
         static StreamReader inFile;
         static StreamWriter outFile;
 
+        public FileManager()
+        {
+            // Game1 reads upgrades from a static initializer, before Initialize runs.
+            RuntimeData.EnsureDefaults(AppDomain.CurrentDomain.BaseDirectory);
+        }
+
         //Pre: String of the filepath, an int of the maxlevelwidth, and an int of the maxlevelheight
         //Post: Returns a 2D array of the level's tileset
         //Desc: Reads in a file that layout's the tiles in the stage, stores the tiles in a 2D array,
@@ -26,7 +32,7 @@ namespace PASS3___Grade_12
             try
             {
                 //Open the file
-                inFile = File.OpenText(filePath);
+                inFile = File.OpenText(RuntimeData.ResolvePath(filePath));
 
                 //Creating the 2D array & normal array given the row and col size's (parameters)
                 int[,] tileSet = new int[maxLevelHeight, maxLevelWidth];
@@ -88,7 +94,7 @@ namespace PASS3___Grade_12
             try
             {
                 //Open the file
-                inFile = File.OpenText(filePath);
+                inFile = File.OpenText(RuntimeData.ResolvePath(filePath));
 
                 //Creating a 2D array & normal array given the row size (parameter)
                 string[] data;
@@ -140,7 +146,7 @@ namespace PASS3___Grade_12
             try
             {
                 //Creating the file
-                outFile = File.CreateText(filePath);
+                outFile = File.CreateText(RuntimeData.ResolvePath(filePath));
 
                 //Loop through how many statistics the 2d array has
                 for(int i = 0; i < playerData.GetLength(0); i++)
@@ -174,7 +180,7 @@ namespace PASS3___Grade_12
             try
             {
                 //Open the file
-                inFile = File.OpenText(filePath);
+                inFile = File.OpenText(RuntimeData.ResolvePath(filePath));
 
                 //Will store the line info
                 string[] data;
@@ -234,7 +240,7 @@ namespace PASS3___Grade_12
             try
             {
                 //Creating the file
-                outFile = File.CreateText(filePath);
+                outFile = File.CreateText(RuntimeData.ResolvePath(filePath));
 
                 //Writing the legend of the upgrades
                 outFile.WriteLine("0 = Unlocked, 1 = locked;");

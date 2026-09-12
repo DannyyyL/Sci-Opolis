@@ -1,7 +1,7 @@
 
 #----------------------------- Global Properties ----------------------------#
 
-/outputDir:..\bin\Debug\Content
+/outputDir:bin/$(Platform)/Content
 /intermediateDir:obj/$(Platform)
 /platform:DesktopGL
 /config:
@@ -31,12 +31,6 @@
 /processorParam:Quality=Best
 /build:Audio/Music/UpgradeMusic.mp3
 
-#begin Audio/Sounds/Can You Just Die Already.wav
-/importer:WavImporter
-/processor:SoundEffectProcessor
-/processorParam:Quality=Best
-/build:Audio/Sounds/Can You Just Die Already.wav
-
 #begin Audio/Sounds/Click.wav
 /importer:WavImporter
 /processor:SoundEffectProcessor
@@ -60,12 +54,6 @@
 /processor:SoundEffectProcessor
 /processorParam:Quality=Best
 /build:Audio/Sounds/Hit.wav
-
-#begin Audio/Sounds/Im Surprised You Made It This Far.wav
-/importer:WavImporter
-/processor:SoundEffectProcessor
-/processorParam:Quality=Best
-/build:Audio/Sounds/Im Surprised You Made It This Far.wav
 
 #begin Audio/Sounds/Jump.wav
 /importer:WavImporter
