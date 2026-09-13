@@ -73,11 +73,22 @@ The fresh clone used this host's installed prerequisites; it was not a separate 
 
 The existing `CS0649` warning for `Bullet.gameTime` remains. A first MGCB content build also reports an assembly type-discovery warning (`Unable to load one or more of the requested types`); all assets used by this project compile successfully. Neither warning was suppressed.
 
-## Remaining manual checks
+## Survival-time follow-up
+
+The follow-up regression runner reproduced the original record bug before editing `Game1`: 1 ms became `0.1`, 65.012 seconds became `5.12`, and a 12.345-second record could be replaced by a later 11.345-second run in the same session. Parsing also failed under `fr-CA`.
+
+The fix compares raw total milliseconds converted to seconds against the current saved record, writes invariant decimal seconds, and labels the Stats value with `s`. It also supplies fractional `ElapsedGameTime.TotalMilliseconds` to the timer. The helper DLL and other gameplay timers remain unchanged.
+
+`tools/Verify-SurvivalTime.ps1` compiles a small runner in a disposable directory and invokes the real game record method without creating a graphical game. It checks subsecond, exact-second, minute/hour, sequential-run and locale cases, then starts a second process to verify persistence. It does not use or change player saves. Previously misformatted historical time cannot be reconstructed from the old save value.
+
+Debug and Release builds, all survival-time regression checks, and the existing runtime-data checks passed after the fix. This includes fractional frame durations, shorter runs under both French Canadian and German number settings, and persistence through a new process. A read-only review found no blocking issues.
+
+## Graphical checks still pending
 
 - Two controllers in local co-op, including independent movement and firing.
 - Complete a run through game over, relaunch, and confirm earned coins/statistics persist.
 - Buy upgrades, relaunch, and verify the unlocked behavior and sawed-off selection.
+- Visually recheck the Stats menu's survival-time value and seconds label after completing a run.
 
 These checks require launching and interacting with the graphical game. They are not prerequisites for compiling, and have not been represented as completed.
 

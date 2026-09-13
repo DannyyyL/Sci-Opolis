@@ -106,7 +106,7 @@ On first launch, the game creates missing data files beside the executable from 
 | File | Contents |
 | --- | --- |
 | `Stage.txt` | Three header lines followed by a 38-column × 22-row tile grid for the 1216×704 arena. |
-| `Statistics.txt` | Six `label,value` rows: best survival time, coins, coins spent, launches, waves survived, enemies killed. New profiles start at zero. |
+| `Statistics.txt` | Six `label,value` rows: best survival time in total seconds, coins, coins spent, launches, waves survived, enemies killed. New profiles start at zero. |
 | `Upgrades.txt` | Two header lines followed by five comma-separated flags. `1` means locked, `0` means unlocked; new profiles start with all five locked. |
 
 Paths are resolved against the executable directory, so launching from another working directory uses the same saves. Debug and Release output directories have separate progress files. Rebuilding does not replace existing data files; deleting an output directory also removes the saves stored there.
@@ -114,6 +114,8 @@ Paths are resolved against the executable directory, so launching from another w
 Default creation never replaces an existing file, including a malformed one. The existing parsers do not automatically repair corrupt data. To reset progress, close the game, **back up** `Statistics.txt` and `Upgrades.txt`, then move those two files out of the executable directory and relaunch. Treat both files as a pair when restoring a profile. To reset the arena, back up and move `Stage.txt` separately. Startup recreates only the missing files.
 
 The original `Stage.txt` was not committed. The supplied default arena was reconstructed from the historical GIF, so exact equivalence to the original layout is not guaranteed. Gameplay code, controls, enemy behavior, weapon timings, and upgrade costs were preserved by the build/runtime repair.
+
+Best survival time is shown in seconds (`s`). New records use three decimal places and a decimal point in the save file regardless of Windows number settings. Shorter runs cannot lower a record, including after restarting. The old timer formatter lost minutes and misformatted some fractions; historical values are retained, but lost time cannot be recovered automatically.
 
 ## Architecture
 
@@ -141,7 +143,9 @@ Sci-Opolis/
 ├── docs/
 │   └── windows-verification.md     # Inventory and validation evidence
 ├── tools/
-│   └── Verify-RuntimeData.ps1      # Data checks without a game window
+│   ├── Verify-RuntimeData.ps1      # Data checks without a game window
+│   ├── Verify-SurvivalTime.ps1     # Survival-record regression runner
+│   └── SurvivalTimeChecks.cs      # Tests run in an isolated process
 └── PASS3 - Grade 12/
     ├── PASS3 - Grade 12.csproj
     ├── packages.config            # Pinned dependencies
@@ -170,9 +174,12 @@ After building, run the isolated data checks without opening a game window:
 
 ```powershell
 powershell -NoProfile -ExecutionPolicy Bypass -File .\tools\Verify-RuntimeData.ps1
+powershell -NoProfile -ExecutionPolicy Bypass -File .\tools\Verify-SurvivalTime.ps1
 ```
 
 This exercises default creation, parsing, save round trips, preservation of existing files, and working-directory independence using temporary test data. Pass `-Configuration Release` to check the Release build instead.
+
+The survival-time regression checks exercise the game's record-saving method without opening a window, including runs over a minute/hour, shorter subsequent runs, fractional seconds, different number formats, and persistence across a new process. A visual check of the Stats menu still requires launching the game manually.
 
 - The original .NET Framework 4.6.1 target and MonoGame 3.7 toolchain remain legacy dependencies. This repair does not migrate the project to a current framework. Linux and macOS builds are not configured or verified.
 - The arena uses a fixed 1216×704 window and 32-pixel tiles; there is no resolution setting or in-game map editor.

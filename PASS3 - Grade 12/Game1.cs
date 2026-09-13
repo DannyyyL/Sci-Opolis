@@ -25,6 +25,7 @@ using Microsoft.Xna.Framework.Media;
 using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 using System;
+using System.Globalization;
 using Helper;
 //HOW TO WIN ENDLESSLY; 
 //1. Head to gun class and set reload timer to 10
@@ -149,7 +150,6 @@ namespace PASS3___Grade_12
         List<Player> players = new List<Player>();
         //Player saved data
         static public string[,] playerData;
-        double bestSurvivalTime;
         Timer survivalTimer;
         //Player saved data identifiers
         const int BEST_SURVIVAL_TIME = 0;
@@ -400,7 +400,6 @@ namespace PASS3___Grade_12
 
             //Loading timers
             survivalTimer = new Timer(Timer.INFINITE_TIMER, false);
-            bestSurvivalTime = Convert.ToDouble(playerData[BEST_SURVIVAL_TIME, NUM]);
 
             //+1 times logged in
             TimesLoggedIn();
@@ -743,7 +742,7 @@ namespace PASS3___Grade_12
             }
 
             //Updating all timers
-            survivalTimer.Update(gameTime.ElapsedGameTime.Milliseconds);
+            survivalTimer.Update(gameTime.ElapsedGameTime.TotalMilliseconds);
         }
 
         //Pre: None
@@ -895,7 +894,7 @@ namespace PASS3___Grade_12
             TextDrawer(menuFont, "Stats", screenHeight / 12, false, Color.LightGreen, Color.White);
 
             //Drawing the statistics
-            TextDrawer(statFont, playerData[BEST_SURVIVAL_TIME, TEXT] + playerData[BEST_SURVIVAL_TIME, NUM], screenHeight / 5, false, Color.White, Color.White);
+            TextDrawer(statFont, playerData[BEST_SURVIVAL_TIME, TEXT] + playerData[BEST_SURVIVAL_TIME, NUM] + " s", screenHeight / 5, false, Color.White, Color.White);
             TextDrawer(statFont, playerData[COINS_SPENT, TEXT] + playerData[COINS_SPENT, NUM], (int)(screenHeight / 3.25), false, Color.White, Color.White);
             TextDrawer(statFont, playerData[WAVES_SURVIVED, TEXT] + playerData[WAVES_SURVIVED, NUM], (int)(screenHeight / 2.5), false, Color.White, Color.White);
             TextDrawer(statFont, playerData[TIMES_LOGGED_IN, TEXT] + playerData[TIMES_LOGGED_IN, NUM], (int)(screenHeight / 2), false, Color.White, Color.White);
@@ -1065,19 +1064,19 @@ namespace PASS3___Grade_12
             SaveStatsAndInventory();
         }
 
-        //Pre: Timer of a playthrough, and a double variable of the best survival time
+        //Pre: Timer of a completed playthrough
         //Post: None
-        //Desc: Compares the passed in survival timer to the best survival time; if the timer is longer then the best survival time, then;
-        //save and set best time to the survival timer
-        public static void BestSurvivalTime(Timer survivalTimer, double bestSurvivalTime)
+        //Desc: Saves a new record in total seconds, preserving the best result across runs.
+        public static void BestSurvivalTime(Timer survivalTimer)
         {
-            //Access this statement if the survival timer is a greater number then the best survival time
-            if (Convert.ToDouble(survivalTimer.GetTimePassedAsString(Timer.FORMAT_SEC_MIL)) > bestSurvivalTime)
+            // Helper's display formatter wraps at minutes and does not pad milliseconds.
+            // Compare raw elapsed time with the current record, not a cached launch-time value.
+            double survivalSeconds = survivalTimer.GetTimePassed() / 1000.0;
+            double bestSeconds = double.Parse(playerData[BEST_SURVIVAL_TIME, NUM], NumberStyles.Float, CultureInfo.InvariantCulture);
+            if (survivalSeconds > bestSeconds)
             {
-                playerData[BEST_SURVIVAL_TIME, NUM] = survivalTimer.GetTimePassedAsString(Timer.FORMAT_SEC_MIL);
-
-                //Setting the new best survival time
-                bestSurvivalTime = Convert.ToDouble(survivalTimer.GetTimePassed());
+                // A decimal point keeps the comma-separated save format valid in every locale.
+                playerData[BEST_SURVIVAL_TIME, NUM] = survivalSeconds.ToString("0.000", CultureInfo.InvariantCulture);
 
                 //Saving
                 SaveStatsAndInventory();
@@ -1092,7 +1091,7 @@ namespace PASS3___Grade_12
             CoinAddition(coinsEarned);
             EnemiesKilledAddition(enemiesKilled);
             WavesSurvivedAddition(waveNum - 1);
-            BestSurvivalTime(survivalTimer, bestSurvivalTime);
+            BestSurvivalTime(survivalTimer);
         }
 
         //Pre: int cost of upgrade
