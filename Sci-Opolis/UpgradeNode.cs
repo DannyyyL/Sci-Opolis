@@ -1,6 +1,6 @@
 ﻿//Author: Dan Lichtin
 //File Name: UpgradeNode.cs
-//Project Name: PASS3
+//Project Name: Sci-Opolis
 //Creation Date: December 31, 2022
 //Modified Date: January 22, 2022
 //Description: The upgrade node object held by the tree, holds a parent (unless it's the root), and can hold left/right child nodes
@@ -14,7 +14,7 @@ using System;
 //Binary Tree - This is a node of a binary tree; carries a left, right, and parent node;
 //also carries the functionality that nodes in binary tree have (set & get left/right/parent)
 
-namespace PASS3___Grade_12
+namespace SciOpolis
 {
     class UpgradeNode
     {

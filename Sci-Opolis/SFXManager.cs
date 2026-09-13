@@ -1,6 +1,6 @@
 ﻿//Author: Dan Lichtin
 //File Name: SFXManager.cs
-//Project Name: PASS3
+//Project Name: Sci-Opolis
 //Creation Date: December 29, 2022
 //Modified Date: January 22, 2023
 //Description: Manages all the sound effects in the game,
@@ -10,7 +10,7 @@ using System.Collections.Generic;
 //PROOF OF CONCEPT:
 //Lists - The SFX Manager carries a list of sound effects & sound effect instances
 
-namespace PASS3___Grade_12
+namespace SciOpolis
 {
     public class SFXManager
     {

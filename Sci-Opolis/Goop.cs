@@ -1,6 +1,6 @@
 ﻿//Author: Dan Lichtin
 //File Name: Goop.cs
-//Project Name: PASS3
+//Project Name: Sci-Opolis
 //Creation Date: December 2, 2022
 //Modified Date: January 22, 2023
 //Description: A child class of the parent enemy class; handles the logic and data of the Goop enemy
@@ -14,7 +14,7 @@ using System.Collections.Generic;
 //It holds the functions and data of the enemy parent class but carries its own movement speed, animations, and timers
 //The goop enemy has a unique attack ability in so that it moves 3 times faster when it's attacking
 
-namespace PASS3___Grade_12
+namespace SciOpolis
 {
     class Goop : Enemy
     {

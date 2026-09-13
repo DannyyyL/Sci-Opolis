@@ -6,7 +6,7 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{05906DFD-A4C0-4F35-9BA4-48C184BE8ED8}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>PASS3___Grade_12</RootNamespace>
+    <RootNamespace>SciOpolis</RootNamespace>
     <AssemblyName>$(ProjectName)</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>

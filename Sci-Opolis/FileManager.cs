@@ -1,6 +1,6 @@
 ﻿//Author: Dan Lichtin
 //File Name: FileManager.cs
-//Project Name: PASS3
+//Project Name: Sci-Opolis
 //Creation Date: December 5, 2022
 //Modified Date: January 22, 2023
 //Description: Handles reading and saving multiple components of the game
@@ -9,7 +9,7 @@ using System.IO;
 //PROOF OF CONCEPT:
 //File I/O && 2D array - Reads and Saves files; reads the stage layout (a 2d array), reads and saves statistics,
 //and reads and saves player upgrades
-namespace PASS3___Grade_12
+namespace SciOpolis
 {
     class FileManager
     {

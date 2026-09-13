@@ -27,14 +27,14 @@ function Get-FileBytesKey {
 }
 
 $repositoryRoot = Split-Path -Parent $PSScriptRoot
-$executable = Join-Path $repositoryRoot "PASS3 - Grade 12\bin\$Configuration\PASS3 - Grade 12.exe"
+$executable = Join-Path $repositoryRoot "Sci-Opolis\bin\$Configuration\Sci-Opolis.exe"
 Assert-True (Test-Path -LiteralPath $executable -PathType Leaf) "Build $Configuration before running this script: $executable"
 $assembly = [Reflection.Assembly]::LoadFrom($executable)
-$runtimeData = $assembly.GetType('PASS3___Grade_12.RuntimeData', $true)
+$runtimeData = $assembly.GetType('SciOpolis.RuntimeData', $true)
 $staticFlags = [Reflection.BindingFlags]'NonPublic, Static'
 $ensureDefaults = $runtimeData.GetMethod('EnsureDefaults', $staticFlags)
 $resolvePath = $runtimeData.GetMethod('ResolvePath', $staticFlags)
-$fileManagerType = $assembly.GetType('PASS3___Grade_12.FileManager', $true)
+$fileManagerType = $assembly.GetType('SciOpolis.FileManager', $true)
 # Do not run the constructor: it would create defaults in the host's BaseDirectory.
 $fileManager = [Runtime.Serialization.FormatterServices]::GetUninitializedObject($fileManagerType)
 $readStage = $fileManagerType.GetMethod('ReadStageLayout')

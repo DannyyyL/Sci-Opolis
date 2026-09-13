@@ -1,6 +1,6 @@
 ﻿//Author: Dan Lichtin
 //File Name: Enemy.cs
-//Project Name: PASS3
+//Project Name: Sci-Opolis
 //Creation Date: December 19, 2022
 //Modified Date: January 22, 2023
 //Description: This class will handle all the enemy data, movement, and collision
@@ -14,7 +14,7 @@ using System.Collections.Generic;
 //OOP - Enemy is the parent class of all enemies; it holds functions that the child enemies can call, and the general enemy data that the enemies carry
 //2D arrays - Enemies detect collision with every object; they loop through the tileset (a 2d array) and check for intersections with every single tile
 
-namespace PASS3___Grade_12
+namespace SciOpolis
 {
     class Enemy
     {

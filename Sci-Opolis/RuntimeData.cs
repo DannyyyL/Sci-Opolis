@@ -1,7 +1,7 @@
 using System;
 using System.IO;
 
-namespace PASS3___Grade_12
+namespace SciOpolis
 {
     // Keep saves beside the executable, including when launched from another directory.
     internal static class RuntimeData
@@ -30,7 +30,7 @@ namespace PASS3___Grade_12
                     continue;
                 }
 
-                string resourceName = "PASS3___Grade_12.DefaultData." + fileName;
+                string resourceName = "SciOpolis.DefaultData." + fileName;
                 using (Stream source = typeof(RuntimeData).Assembly.GetManifestResourceStream(resourceName))
                 {
                     if (source == null)

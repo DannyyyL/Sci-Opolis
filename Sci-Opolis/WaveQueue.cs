@@ -1,6 +1,6 @@
 ﻿//Author: Dan Lichtin
 //File Name: WaveQueue.cs
-//Project Name: PASS3
+//Project Name: Sci-Opolis
 //Creation Date: December 27, 2022
 //Modified Date: January 22, 2023
 //Description: Carries stacks of enemeies that will be dequeued periodically
@@ -12,7 +12,7 @@ using System.Collections.Generic;
 //Queue - WaveQueue is a queue held by the driver class, and which carries an array of stacks (that carry enemeies)
 //WaveQueue dequeues it's stacks and pops them simultaneously
 
-namespace PASS3___Grade_12
+namespace SciOpolis
 {
     class WaveQueue
     {

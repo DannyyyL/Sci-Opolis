@@ -1,6 +1,6 @@
 ﻿//Author: Dan Lichtin
 //File Name: Gun.cs
-//Project Name: PASS3
+//Project Name: Sci-Opolis
 //Creation Date: December 16, 2022
 //Modified Date: January 22, 2023
 //Description: The gun parent class for all guns in the game
@@ -14,7 +14,7 @@ using System.Collections.Generic;
 //OOP - Gun is the parent class of all guns; it holds functions that the child guns can call, and the general gun data that the gun carries
 //Lists - Gun carries a list of bullets
 
-namespace PASS3___Grade_12
+namespace SciOpolis
 {
     class Gun
     {

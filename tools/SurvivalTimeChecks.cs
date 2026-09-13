@@ -3,7 +3,7 @@ using System.Globalization;
 using System.IO;
 using System.Reflection;
 using System.Threading;
-using PASS3___Grade_12;
+using SciOpolis;
 
 // Runs in a disposable directory, without constructing a graphical Game1.
 internal static class SurvivalTimeChecks
@@ -13,7 +13,7 @@ internal static class SurvivalTimeChecks
 
     private static string[,] ReadStats()
     {
-        Type type = typeof(Game1).Assembly.GetType("PASS3___Grade_12.FileManager", true);
+        Type type = typeof(Game1).Assembly.GetType("SciOpolis.FileManager", true);
         object manager = Activator.CreateInstance(type, true);
         return (string[,])type.GetMethod("ReadStatsAndInventory").Invoke(manager, new object[] { "Statistics.txt", 6 });
     }

@@ -1,6 +1,6 @@
 ﻿//Author: Dan Lichtin
 //File Name: LongLegs.cs
-//Project Name: PASS3
+//Project Name: Sci-Opolis
 //Creation Date: January 12, 2022
 //Modified Date: January 22, 2023
 //Description: A child class of the parent enemy class; handles the logic and data of the long legs enemy
@@ -14,7 +14,7 @@ using System.Collections.Generic;
 //It holds the functions and data of the enemy parent class but carries its own movement speed and animations
 //The long legs enemy also carries another object, an ak47
 
-namespace PASS3___Grade_12
+namespace SciOpolis
 {
     class LongLegs : Enemy
     {

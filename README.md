@@ -2,7 +2,7 @@
 
 Sci-Opolis is a 2D wave survival shooter built in C# with MonoGame. Fight through increasingly crowded waves alone or with a second local player, earn coins, and buy permanent upgrades between runs. The game began as a Grade 12 programming project by Dan Lichtin.
 
-![Historical Sci-Opolis gameplay](PASS3%20-%20Grade%2012/Content/Sci-Opolis.gif)
+![Historical Sci-Opolis gameplay](Sci-Opolis/Content/Sci-Opolis.gif)
 
 *Historical gameplay recording included with the original repository; this is not a capture of the current build verification.* [Watch the original full gameplay video](https://youtu.be/HobAbvKmJ4E).
 
@@ -37,7 +37,7 @@ The script restores packages, compiles the content and game, and checks that the
 **Manual graphical step:** launch the Debug executable, then click **Single Player**:
 
 ```powershell
-& '.\PASS3 - Grade 12\bin\Debug\PASS3 - Grade 12.exe'
+& '.\Sci-Opolis\bin\Debug\Sci-Opolis.exe'
 ```
 
 Keep the entire output directory together if you copy the game elsewhere. Copying only the executable omits its DLLs and `Content` directory.
@@ -46,7 +46,7 @@ For an optimized build:
 
 ```powershell
 powershell -NoProfile -ExecutionPolicy Bypass -File .\build.ps1 -Configuration Release
-& '.\PASS3 - Grade 12\bin\Release\PASS3 - Grade 12.exe'
+& '.\Sci-Opolis\bin\Release\Sci-Opolis.exe'
 ```
 
 After a successful restore, use `-NoRestore` to build with the locally cached packages:
@@ -146,8 +146,8 @@ Sci-Opolis/
 │   ├── Verify-RuntimeData.ps1      # Data checks without a game window
 │   ├── Verify-SurvivalTime.ps1     # Survival-record regression runner
 │   └── SurvivalTimeChecks.cs      # Tests run in an isolated process
-└── PASS3 - Grade 12/
-    ├── PASS3 - Grade 12.csproj
+└── Sci-Opolis/
+    ├── Sci-Opolis.csproj
     ├── packages.config            # Pinned dependencies
     ├── Program.cs / Game1.cs       # Entry point and game coordinator
     ├── Player.cs / Enemy.cs / LongLegs.cs / Goop.cs / Cyclops.cs
@@ -187,4 +187,4 @@ The survival-time regression checks exercise the game's record-saving method wit
 - There is no pause or mid-run resume. Progress files require a writable output directory, are plain text, and have limited validation.
 - `Helper.dll` and `Animation2D.dll` are provided as binaries; their source projects are absent.
 - The existing compiler warning `CS0649` for `Bullet.gameTime` remains. MGCB can also report a type-discovery warning on the first content build; all project assets still compile. Older and unused art assets are retained.
-- The bundled OriginTech font is marked **personal use only** in its [included notice](PASS3%20-%20Grade%2012/Content/Fonts/Readme.txt). The repository does not include an overall license granting reuse of all code and assets.
+- The bundled OriginTech font is marked **personal use only** in its [included notice](Sci-Opolis/Content/Fonts/Readme.txt). The repository does not include an overall license granting reuse of all code and assets.

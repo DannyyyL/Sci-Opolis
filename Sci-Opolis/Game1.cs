@@ -1,6 +1,6 @@
 ﻿//Author: Dan Lichtin
 //File Name: Game1.cs
-//Project Name: PASS3
+//Project Name: Sci-Opolis
 //Creation Date: December 2, 2022
 //Modified Date: January 22, 2023
 //Description: Sci Opolis is a single/co-op 2D wave based shooter;
@@ -33,7 +33,7 @@ using Helper;
 //3. Head to player class and set health to 100 
 //4. Done
 
-namespace PASS3___Grade_12
+namespace SciOpolis
 {
     public class Game1 : Game
     {

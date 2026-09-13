@@ -37,10 +37,10 @@ if (-not $NoRestore) {
 & $msbuild @buildArguments
 if ($LASTEXITCODE -ne 0) { throw "MSBuild failed (exit $LASTEXITCODE)." }
 
-$projectDirectory = Join-Path $PSScriptRoot 'PASS3 - Grade 12'
+$projectDirectory = Join-Path $PSScriptRoot 'Sci-Opolis'
 $outputDirectory = Join-Path $projectDirectory "bin\$Configuration"
 $requiredFiles = @(
-    'PASS3 - Grade 12.exe', 'PASS3 - Grade 12.exe.config',
+    'Sci-Opolis.exe', 'Sci-Opolis.exe.config',
     'Helper.dll', 'Animation2D.dll', 'MonoGame.Framework.dll',
     'x86\SDL2.dll', 'x86\soft_oal.dll', 'x64\SDL2.dll', 'x64\soft_oal.dll'
 )
@@ -60,4 +60,4 @@ foreach ($relativePath in $requiredFiles) {
     }
 }
 Write-Host "Build and output checks passed: $outputDirectory"
-Write-Host 'Launch PASS3 - Grade 12.exe manually to check graphics, audio and gameplay.'
+Write-Host 'Launch Sci-Opolis.exe manually to check graphics, audio and gameplay.'

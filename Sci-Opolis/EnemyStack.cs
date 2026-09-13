@@ -1,6 +1,6 @@
 ﻿//Author: Dan Lichtin
 //File Name: EnemyStack.cs
-//Project Name: PASS3
+//Project Name: Sci-Opolis
 //Creation Date: December 27, 2022
 //Modified Date: January 22, 2023
 //Description: Carries enemies and pops them given a time interval
@@ -9,7 +9,7 @@ using Microsoft.Xna.Framework.Graphics;
 //Stack - EnemyStack is a stack that carries an array of enemy objects and is held by a queue;
 //EnemyStack holds some of the functionality/data that a stack has; Pop, Size (popped enemies), and carrying an array/list
 
-namespace PASS3___Grade_12
+namespace SciOpolis
 {
     class EnemyStack
     {

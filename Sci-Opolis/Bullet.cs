@@ -1,6 +1,6 @@
 ﻿//Author: Dan Lichtin
 //File Name: Bullet.cs
-//Project Name: PASS3
+//Project Name: Sci-Opolis
 //Creation Date: December 16, 2022
 //Modified Date: January 22, 2023
 //Description: Handles the bullet logic, all guns use this object/class
@@ -11,7 +11,7 @@ using Microsoft.Xna.Framework.Graphics;
 //PROOF OF CONCEPT:
 //OOP - Bullet is an object that the gun carries; each bullet carries it's own speed, animation, and hit box
 
-namespace PASS3___Grade_12
+namespace SciOpolis
 {
     class Bullet
     {

@@ -3,7 +3,7 @@ param([ValidateSet('Debug', 'Release')][string]$Configuration = 'Debug')
 
 $ErrorActionPreference = 'Stop'
 $repositoryRoot = Split-Path -Parent $PSScriptRoot
-$output = Join-Path $repositoryRoot "PASS3 - Grade 12\bin\$Configuration"
+$output = Join-Path $repositoryRoot "Sci-Opolis\bin\$Configuration"
 $tempRoot = [IO.Path]::GetFullPath([IO.Path]::GetTempPath()).TrimEnd('\') + '\'
 $ownedName = 'SciOpolis-survival-' + [Guid]::NewGuid().ToString('N')
 $testDirectory = Join-Path $tempRoot $ownedName
@@ -12,11 +12,11 @@ $owned = $false
 try {
     New-Item -ItemType Directory -Path $testDirectory -ErrorAction Stop | Out-Null
     $owned = $true
-    foreach ($file in @('PASS3 - Grade 12.exe', 'PASS3 - Grade 12.exe.config', 'MonoGame.Framework.dll', 'Helper.dll', 'Animation2D.dll')) {
+    foreach ($file in @('Sci-Opolis.exe', 'Sci-Opolis.exe.config', 'MonoGame.Framework.dll', 'Helper.dll', 'Animation2D.dll')) {
         Copy-Item -LiteralPath (Join-Path $output $file) -Destination $testDirectory
     }
     $runner = Join-Path $testDirectory 'SurvivalTimeChecks.exe'
-    $references = @('PASS3 - Grade 12.exe', 'MonoGame.Framework.dll', 'Helper.dll') | ForEach-Object { '/reference:' + (Join-Path $testDirectory $_) }
+    $references = @('Sci-Opolis.exe', 'MonoGame.Framework.dll', 'Helper.dll') | ForEach-Object { '/reference:' + (Join-Path $testDirectory $_) }
     & $csc /nologo /target:exe "/out:$runner" @references (Join-Path $PSScriptRoot 'SurvivalTimeChecks.cs')
     if ($LASTEXITCODE -ne 0) { throw 'Could not compile survival-time checks.' }
     & $runner

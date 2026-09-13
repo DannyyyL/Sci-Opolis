@@ -1,6 +1,6 @@
 ﻿//Author: Dan Lichtin
 //File Name: UpgradeTree.cs
-//Project Name: PASS3
+//Project Name: Sci-Opolis
 //Creation Date: December 31, 2022
 //Modified Date: January 22, 2023
 //Description: Holds the root upgrade node, allows for certain upgrades to be locked
@@ -13,7 +13,7 @@ using Microsoft.Xna.Framework.Input;
 //Recursion (Not originally part of the 5 concepts to be proven) - Recursivley loops through the nodes that the tree has and 
 //acceses different paths the tree has
 
-namespace PASS3___Grade_12
+namespace SciOpolis
 {
     class UpgradeTree
     {

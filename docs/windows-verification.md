@@ -6,7 +6,7 @@ Baseline: `d96d5d8` on `master`. Work branch: `codex/windows-clean-clone`.
 
 | Area | Findings |
 | --- | --- |
-| Solution | `Sci-Opolis.sln`, one classic C# project in `PASS3 - Grade 12/`; 18 C# files including assembly metadata. |
+| Solution | `Sci-Opolis.sln`, one classic C# project in `Sci-Opolis/`; 18 C# files including assembly metadata. |
 | Framework | WinExe, AnyCPU, .NET Framework **4.6.1**, Debug and Release; Visual Studio solution format 12. |
 | MonoGame | `MonoGame.Framework.DesktopGL` **3.7.0.1708**, pinned in `packages.config`; OpenGL/SDL2/OpenAL backend. |
 | Managed libraries | Tracked `Libraries/Helper.dll` and `Libraries/Animation2D.dll`, both assembly version 1.0.0.0. Helper references MonoGame 3.7.0.1708; Animation2D references 3.6.0.1625. Their source is absent. Existing binaries are retained. |

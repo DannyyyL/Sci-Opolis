@@ -1,6 +1,6 @@
 ﻿//Author: Dan Lichtin
 //File Name: Cyclops.cs
-//Project Name: PASS3
+//Project Name: Sci-Opolis
 //Creation Date: January 12, 2022
 //Modified Date: January 22, 2023
 //Description: A child class of the parent enemy class; handles the logic and data of the cyclops enemy
@@ -14,7 +14,7 @@ using System.Collections.Generic;
 //It holds the functions and data of the enemy parent class but carries its own movement speed and animations
 //The cyclops enemy has a unique ability to explode and kill itself when a wider rec collides with the player
 
-namespace PASS3___Grade_12
+namespace SciOpolis
 {
     class Cyclops : Enemy
     {

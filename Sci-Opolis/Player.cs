@@ -1,6 +1,6 @@
 ﻿//Author: Dan Lichtin
 //File Name: Player.cs
-//Project Name: PASS3
+//Project Name: Sci-Opolis
 //Creation Date: December 2, 2022
 //Modified Date: January 22, 2023
 //Description: This class will handle all the player's data and movement and drawing
@@ -15,7 +15,7 @@ using System.Collections.Generic;
 //OOP - The player class is the blueprint of the player objects;
 //it holds functions, player data, and the phyisics logic that a player requires
 
-namespace PASS3___Grade_12
+namespace SciOpolis
 {
     class Player
     {

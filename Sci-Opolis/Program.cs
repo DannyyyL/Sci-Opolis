@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace PASS3___Grade_12
+namespace SciOpolis
 {
     /// <summary>
     /// The main class.
